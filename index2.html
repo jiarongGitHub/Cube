@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			html {
+				height: 100%;
+				background-image: linear-gradient(lightgreen 0, black 80%);
+			}
+			
+			#wrap {
+				width: 200px;
+				margin: 150px auto;
+				perspective: 400px;
+			}
+			
+			#wrap #bigBox {
+				position: relative;
+				transform-style: preserve-3d;
+				width: 200px;
+				height: 200px;
+				animation: rotate 8s infinite linear;
+				/*改变盒子基点 从中间开始转*/
+				transform-origin: center center -100px;
+			}
+			
+			#wrap #bigBox .out-face{
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				text-align: center;
+				line-height: 200px;
+				font-size: 20px;
+				font-weight: bold;
+				color: #fff;
+				background: #333;
+				opacity: .6;
+				border: 1px solid #fff;
+				/*改变每一个面的基点 让其折成一个立方体*/
+				transform-origin: center center -100px;
+				transition: transform 0.5s ease-in;
+			}
+			
+			@keyframes rotate {
+				from {
+					transform: rotateX(0deg) rotateY(0deg);
+				}
+				to {
+					transform: rotateX(360deg) rotateY(360deg);
+				}
+			}
+			
+			#wrap #bigBox>div:nth-child(1) {
+				transform: rotateX(90deg);
+			}
+			
+			#wrap #bigBox>div:nth-child(2) {
+				transform: rotateX(-90deg);
+			}
+			
+			#wrap #bigBox>div:nth-child(3) {
+				transform: rotateY(-90deg);
+				,
+			}
+			
+			#wrap #bigBox>div:nth-child(4) {
+				transform: rotateY(90deg);
+			}
+			
+			#wrap #bigBox>div:nth-child(5) {
+				transform: rotateY(0deg);
+			}
+			
+			#wrap #bigBox>div:nth-child(6) {
+				transform: rotateY(180deg);
+			}
+			
+			#wrap #bigBox .in-face {
+				position: absolute;
+				top: 50px;
+				left: 50px;
+				width: 50%;
+				height: 50%;
+				text-align: center;
+				background: #999;
+				border: 1px solid #000;
+				/*改变每一个面的基点 让其折成一个立方体*/
+				transform-origin: center center -50px;
+			}
+			
+			#wrap #bigBox>div:nth-child(7) {
+				transform: translateZ(-50px) rotateX(90deg);
+			}
+			
+			#wrap #bigBox>div:nth-child(8) {
+				transform: translateZ(-50px) rotateX(-90deg);
+			}
+			
+			#wrap #bigBox>div:nth-child(9) {
+				transform: translateZ(-50px) rotateY(-90deg);
+			}
+			
+			#wrap #bigBox>div:nth-child(10) {
+				transform: translateZ(-50px) rotateY(90deg);
+			}
+			
+			#wrap #bigBox>div:nth-child(11) {
+				transform: translateZ(-50px) rotateY(0deg);
+			}
+			
+			#wrap #bigBox>div:nth-child(12) {
+				transform: translateZ(-50px) rotateY(180deg);
+			}
+			
+				#wrap:hover #bigBox .front{
+				transform: translateZ(100px);
+			}
+			
+			#wrap:hover #bigBox .back {
+				transform: translateZ(-100px) rotateY(180deg);
+			}
+			
+			#wrap:hover #bigBox .left {
+				transform: translateX(-100px) rotateY(-90deg);
+			}
+			
+			#wrap:hover #bigBox .right{
+				transform: translateX(100px) rotateY(90deg);
+			}
+			
+			#wrap:hover #bigBox .top{
+				transform: translateY(-100px) rotateX(90deg);
+			}
+			
+			#wrap:hover #bigBox .bottom{
+				transform: translateY(100px) rotateX(-90deg);
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="bigBox">
+				<div class="top out-face">上面</div>
+				<div class="bottom out-face">下面</div>
+				<div class="left out-face">左面</div>
+				<div class="right out-face">右面</div>
+				<div class="front out-face">前面</div>
+				<div class="back out-face">后面</div>
+
+				<div class="in-face"></div>
+				<div class="in-face"></div>
+				<div class="in-face"></div>
+				<div class="in-face"></div>
+				<div class="in-face"></div>
+				<div class="in-face"></div>
+			</div>
+
+		</div>
+	</body>
+
+</html>
